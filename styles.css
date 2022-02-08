@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica";
+}
+
+.wrapper {
+  border: 3px solid #010124;
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("seabottom.png");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.score {
+  font-size: 150px;
+  color: #010124;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 100px;
+  text-align: center;
+}
+
+.countdown {
+  position: absolute;
+  top: 490px;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  color: #010124;
+}
+
+button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: #010124;
+  color: white;
+  padding: 20px 50px;
+  border-radius: 5px;
+  z-index: 200;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.startbtn {
+  border: black;
+}
+
+.game {
+  /* border: 2px solid black; */
+  width: 600px;
+  height: 400px;
+  margin: 70px auto;
+  z-index: 200;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hole {
+  /* border: 1px solid red; */
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 33.33%;
+  position: relative;
+  overflow: hidden;
+}
+
+/*after is a (virtual) pseudo element, that attaches to it's parent. In this case all our 6 whole divs will have the after element */
+.hole:after {
+  content: "";
+  display: block;
+  background-image: url(coral-reef.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index: 2;
+  bottom: -30px;
+  background-size: contain;
+}
+
+.mole {
+  background-image: url(bottle.png);
+  position: absolute;
+  top: 100%;
+  width: 70%;
+  height: 70%;
+  transition: 0.4s;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.mole.small {
+  background-size: 60%;
+}
+
+.mole.large {
+  background-size: 80%;
+}
+
+/*to make mole slide up and down, when hole element has an additional class of up/down, target it's associated mole element*/
+
+.hole.up .mole {
+  top: 0;
+}
